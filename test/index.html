@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio - Fiktor Retno Lobbu</title>
+
+  <!-- Font Awesome untuk ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      scroll-behavior: smooth;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    header {
+      background: #217b6f;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      transition: background 0.4s;
+    }
+
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    /* Efek ketik */
+    .typing {
+      font-size: 18px;
+      white-space: nowrap;
+      border-right: 3px solid white;
+      width: fit-content;
+      margin: 8px auto 0;
+      overflow: hidden;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: white }
+    }
+
+    nav {
+      background: #145347;
+      padding: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #d4f3ea;
+    }
+
+    #darkToggle {
+      background: white;
+      color: #145347;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    #darkToggle:hover {
+      background: #d4f3ea;
+      color: #0f2f27;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      opacity: 0;
+      transition: all 0.8s ease-in-out;
+    }
+
+    /* Animasi masuk section */
+    section.fade-in { transform: translateY(30px); }
+    section.slide-left { transform: translateX(-50px); }
+    section.slide-right { transform: translateX(50px); }
+
+    section.visible {
+      opacity: 1;
+      transform: translate(0,0);
+    }
+
+    h2 {
+      color: #217b6f;
+      margin-bottom: 20px;
+      transition: color 0.4s;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.4s, color 0.4s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      background: #217b6f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    /* Ikon sosial media */
+    .social-links {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .social-links.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-right: 15px;
+      color: #217b6f;
+      font-size: 18px;
+      text-decoration: none;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.2);
+      color: #145347;
+    }
+
+    /* Dark mode */
+    body.dark {
+      background: #121212;
+      color: #e4e4e4;
+    }
+    body.dark header { background: #1e3a34; }
+    body.dark nav { background: #0f2f27; }
+    body.dark nav a { color: #e4e4e4; }
+    body.dark #darkToggle { background: #e4e4e4; color: #0f2f27; }
+    body.dark h2 { color: #4dd0a1; }
+    body.dark .card { background: #1e1e1e; color: #e4e4e4; box-shadow: 0 3px 6px rgba(0,0,0,0.4); }
+    body.dark footer { background: #0f2f27; }
+    body.dark .social-links a { color: #4dd0a1; }
+    body.dark .social-links a:hover { color: #2e7d32; }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+      header h1 { font-size: 28px; }
+      nav { flex-direction: column; gap: 10px; }
+      section { padding: 20px 15px; }
+      .card { padding: 15px; }
+    }
+
+    @media (max-width: 480px) {
+      header img { width: 120px; height: 120px; }
+      header h1 { font-size: 24px; }
+      nav a { display: block; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="profile.jpg" alt="Foto Profil Fiktor Retno Lobbu">
+    <h1>Fiktor Retno Lobbu</h1>
+    <p class="typing">Mahasiswa Sistem Informasi | Universitas Klabat</p>
+  </header>
+
+  <nav>
+    <a href="#about">Tentang Saya</a>
+    <a href="#projects">Proyek</a>
+    <a href="#contact">Kontak</a>
+    <button id="darkToggle">🌙 Dark Mode</button>
+  </nav>
+
+  <!-- Tentang Saya -->
+  <section id="about" class="fade-in">
+    <h2>Tentang Saya</h2>
+    <div class="card">
+      <p>
+        Halo! Saya Fiktor Retno Lobbu, mahasiswa Sistem Informasi Universitas Klabat. 
+        Saya memiliki minat besar dalam bidang analisis sistem, pengembangan aplikasi berbasis web, 
+        serta penerapan teknologi informasi untuk mendukung efisiensi organisasi. 
+        Selama masa studi, saya aktif mengerjakan berbagai proyek yang berhubungan 
+        dengan sistem informasi, data analytics, dan perancangan aplikasi.
+      </p>
+    </div>
+  </section>
+
+  <!-- Proyek -->
+  <section id="projects" class="slide-left">
+    <h2>Proyek</h2>
+    <div class="card">
+      <h3>Sistem Presensi Berbasis Lokasi di SMA</h3>
+      <p>
+        Sistem informasi presensi yang memungkinkan siswa melakukan absensi kelas 
+        menggunakan handphone atau perangkat elektronik lainnya. 
+        Absensi hanya dapat dilakukan apabila lokasi siswa sesuai dengan standar area sekolah, 
+        sehingga meningkatkan akurasi dan mencegah kecurangan.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Chatbot Pelaporan Pasien IGD RS Advent Manado</h3>
+      <p>
+        Pengembangan chatbot untuk membantu pelaporan pasien di Instalasi Gawat Darurat (IGD) 
+        Rumah Sakit Advent Manado. Chatbot ini dibangun menggunakan integrasi WhatsApp Gateway 
+        dan model AI <i>Gemini Flash</i>, sehingga mempermudah komunikasi dan mempercepat 
+        proses pencatatan laporan pasien.
+      </p>
+    </div>
+  </section>
+
+  <!-- Kontak -->
+  <section id="contact" class="slide-right">
+    <h2>Kontak</h2>
+    <div class="card">
+      <p><i class="fas fa-envelope"></i> <a href="mailto:fiktor2003@gmail.com">fiktor2003@gmail..com</a></p>
+      <div class="social-links" id="socialLinks">
+        <a href="https://www.linkedin.com/in/fiktor-retno-lobbu-55910337b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="http://www.instagram.com/_fictorr?igsh=M2FjMm9iNjNxYXp1" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://wa.me/6281349750353" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Fiktor Retno Lobbu. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Animasi fade/slide section
+    const sections = document.querySelectorAll("section");
+    function showOnScroll() {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add("visible");
+        }
+      });
+
+      // animasi khusus social links
+      const socialLinks = document.getElementById("socialLinks");
+      const socialTop = socialLinks.getBoundingClientRect().top;
+      if (socialTop < window.innerHeight * 0.85) {
+        socialLinks.classList.add("visible");
+      }
+    }
+    window.addEventListener("scroll", showOnScroll);
+    showOnScroll();
+
+    // Dark mode toggle
+    const toggleBtn = document.getElementById("darkToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+  </script>
+</body>
+</html>
